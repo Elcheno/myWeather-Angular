@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { MyWeatherService } from './services/my-weather.service';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,14 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'myWeather';
+  private mw = inject(MyWeatherService);
+
+  constructor(){}
+
+  ngOnInit(){
+    this.mw.getForeCast().subscribe((data) => {
+      console.log(data);
+    });
+  }
+
 }
