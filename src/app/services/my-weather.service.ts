@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map, take } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,22 @@ import { Observable } from 'rxjs';
 export class MyWeatherService {
 
   constructor(
-    private http:HttpClient
-    ) { }
+    private http: HttpClient
+  ) { }
 
-  getForeCast():Observable<any>{
-   return this.http.get('http://api.weatherapi.com/v1/forecast.json?key=fc8c689bc9604eb0b1e113628231411&q=37.668335,-4.725080&days=3&aqi=no&alerts=no');
+  getForeCast(): Observable<any> {
+    return this.http.get(`${environment.apis.weather.url}
+      &key=${environment.apis.weather.key}
+      &q=${environment.apis.weather.testPosition}`)
+      .pipe(map(response => {
+        const { current, ...info } = response as any;
+        return info;
+      }),
+        map(res => {
+          return { 'location': res.location, 'forecast': res.forecast.forecastday }
+        }),
+        take(1)
+      )
   }
 
 }
