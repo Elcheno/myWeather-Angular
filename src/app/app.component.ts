@@ -13,6 +13,8 @@ import { MyWeatherService } from './services/my-weather.service';
 export class AppComponent {
   private mw = inject(MyWeatherService);
 
+  flag = true;
+
   constructor(){}
 
   ngOnInit(){
