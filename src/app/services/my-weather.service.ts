@@ -8,12 +8,9 @@ import { environment } from '../../environments/environment.development';
 })
 export class MyWeatherService {
 
-<<<<<<< HEAD
   private http = inject(HttpClient);
 
   constructor() { }
-=======
->>>>>>> dd259d604fb08e17af30aebaf91f188e335362c1
 
   getForeCast(): Observable<any> {
     return this.http.get(`${environment.apis.weather.url}
