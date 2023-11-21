@@ -1,9 +1,22 @@
-<div class="text-3xl font-bold">
-    @if(flag){
-        <h1>hello World!</h1>
-    }@else {
-        <h1>Bye World!</h1>
-    }
-</div>
+<app-navbar></app-navbar>
+
+<mat-grid-list cols="1" rowHeight="fit" style="height: 100%;">
+
+    <mat-grid-tile>
+        @defer ( when todayForecast) {
+            
+                <app-today [data]="todayForecast"></app-today>
+            
+        } @placeholder {
+            <mat-spinner></mat-spinner>
+        }
+    </mat-grid-tile>
+    
+    <mat-grid-tile>
+        <app-forecast [data]="futureForecast"></app-forecast>
+    </mat-grid-tile>
+
+
+</mat-grid-list>
 
 <router-outlet></router-outlet>

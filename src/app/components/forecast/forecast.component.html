@@ -1,0 +1,21 @@
+@if(data && data.days.length > 0) {
+
+    <div id="forecast">
+        @for(day of data.days; track day.date){
+            <mat-card class="example-card">
+                <mat-card-header>
+                    <mat-card-title>{{day.date | date}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image [src]="day.weather.condition.icon" alt="Photo">
+                <mat-card-content>
+                    <p>
+                        {{day.weather.mintemp}} ºC - {{day.weather.maxtemp}}
+                    </p>
+                </mat-card-content>
+            </mat-card>
+        }
+    </div>
+
+}@else {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+}
