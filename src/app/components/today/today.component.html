@@ -1,0 +1,5 @@
+@if(data) {
+    <p>{{data.location}}</p>
+    <p>{{data.maxtemp}} ºC - {{data.mintemp}} ºC</p>
+    <p>{{data.condition.text}} <img [src]="data.condition.icon" alt="Icono del tiempo"></p>
+}

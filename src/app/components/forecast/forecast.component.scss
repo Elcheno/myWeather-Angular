@@ -1,0 +1,10 @@
+.example-card {
+    min-width: 10rem;
+}
+
+#forecast{
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-x: scroll;
+    max-width: 60vw;
+}
