@@ -1,8 +1,8 @@
 @if(data && data.days.length > 0) {
 
-    <div id="forecast">
+    <div id="parent">
         @for(day of data.days; track day.date){
-            <mat-card class="example-card">
+            <mat-card class="card">
                 <mat-card-header>
                     <mat-card-title>{{day.date | date}}</mat-card-title>
                 </mat-card-header>
@@ -17,5 +17,6 @@
     </div>
 
 }@else {
-    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    <h2 class="text-center">Loading</h2>
+    <mat-progress-bar mode="indeterminate" class="progressBar"></mat-progress-bar>
 }

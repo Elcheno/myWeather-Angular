@@ -1,10 +1,19 @@
-.example-card {
-    min-width: 10rem;
+.card {
+    min-width: 12.2rem;
+    scroll-snap-align: center;
+    text-align: center;
+    background-color: rgb(255, 255, 255, .96);
 }
 
-#forecast{
+#parent{
     display: flex;
     flex-flow: row nowrap;
     overflow-x: scroll;
-    max-width: 60vw;
+    max-width: 12rem;
+    scroll-snap-type: x mandatory;
+    border-radius: 15px;
+}
+
+.progressBar {
+    width: 50vw;
 }
